@@ -61,6 +61,8 @@ func main() {
 	bc.AddBlock("김재영 뒤져")
 	bc.AddBlock("안뒤질랭")
 	fmt.Println(*bc.blocks[2])
+	bc.blocks[0].Timestamp = 1234567890
+	// 작업증명이 없기 때문에 쉽게 변형이 가능함
 	for _,block := range bc.blocks{
 		fmt.Printf("Prev. hash: %d\n",block.PrevBlockHash)
 	}
