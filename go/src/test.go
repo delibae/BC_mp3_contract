@@ -1,7 +1,7 @@
 package main
  
 import ("io/ioutil"
-		"fmt"
+		"os"
 	   )
 		
  
@@ -11,7 +11,12 @@ func main() {
     if err != nil {
         panic(err)
     }
-	fmt.Println(bytes)
+	
+	er := ioutil.WriteFile("/workspace/GO_WORK/New.mp3",bytes,os.FileMode(644))
+	if er != nil {
+        panic(er)
+    }
+	
 }
 
 	
