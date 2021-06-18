@@ -25,8 +25,11 @@ func main(){
 	ConBytes := []byte(AgreeContract + agree)
 	NC.AddBlock(ConBytes)
 	
-	PrivateKey := "This is PrivateKey"
-	PkBytes := []byte(PrivateKey)
+	message := "PrivateKey:"
+	fmt.Println(message)
+	var PrivateKey string
+	fmt.Scanln(&PrivateKey)
+	PkBytes := []byte(message + PrivateKey)
 	NC.AddBlock(PkBytes)
 	
 	timestamp := time.Now().Unix()
@@ -34,7 +37,10 @@ func main(){
 	timestring := strconv.FormatInt(timestamp,10)
 	TimeBytes := []byte(timestring)
 	NC.AddBlock(TimeBytes)
-	fmt.Println(NC.Blocks)
-	
+	Save := NC.Blocks
+	// Save1 := *Save
+	fmt.Println(Save)
+
+
 }
 
