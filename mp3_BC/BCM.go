@@ -19,7 +19,10 @@ func main(){
 	NC.AddBlock(Mbytes)
 	
 	AgreeContract := "Do you accept the contract?"
-	ConBytes := []byte(AgreeContract)
+	fmt.Println(AgreeContract)
+	var agree string 
+	fmt.Scanln(&agree)
+	ConBytes := []byte(AgreeContract + agree)
 	NC.AddBlock(ConBytes)
 	
 	PrivateKey := "This is PrivateKey"
