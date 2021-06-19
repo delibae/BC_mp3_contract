@@ -9,6 +9,9 @@ import(
 	"time"
 	"strconv"
 	"reflect"
+	"encoding/json"
+	"io/ioutil"
+	"os"
 )
 
 
@@ -37,10 +40,21 @@ func main(){
 	timestring := strconv.FormatInt(timestamp,10)
 	TimeBytes := []byte(timestring)
 	NC.AddBlock(TimeBytes)
+	
 	Save := NC.Blocks
-	// Save1 := *Save
-	fmt.Println(Save)
-
-
+	Save1 := make([]BC.Block,len(Save))
+	for i := 1; i <= len(Save); i++{
+		Save1[i-1] = *Save[i-1]
+	}
+	// fmt.Println(Save1)
+	byteArray, err := json.Marshal(Save1)
+    if err != nil {
+        fmt.Println(err)
+    }
+	er := ioutil.WriteFile("./BCM.json", byteArray, os.FileMode(0644)) // articles.json 파일에 JSON 문서 저장
+	if er != nil {
+		fmt.Println(er)
+		return 
+	}
 }
 
