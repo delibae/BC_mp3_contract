@@ -1,10 +1,10 @@
 package BC
 
-import(
-	"bytes"
-	"crypto/sha256"
+// import(
+// 	"bytes"
+// 	"crypto/sha256"
 
-)
+// )
 
 type Block struct{
 	Hash []byte
@@ -14,37 +14,37 @@ type Block struct{
 
 
 type BlockChain struct{
-	Blocks []*Block
+	Blocks []Block
 }
 
-func (b *Block) DeriveHash(){
-	info := bytes.Join([][]byte{b.Data,b.PrevHash},[]byte{})
+// func (b *Block) DeriveHash(){
+// 	info := bytes.Join([][]byte{b.Data,b.PrevHash},[]byte{})
 
-	hash := sha256.Sum256(info)
+// 	hash := sha256.Sum256(info)
 
-	b.Hash = hash[:]
-}
+// 	b.Hash = hash[:]
+// }
 
-func CreateBlock(data []byte, prevHash []byte) *Block {
-	block := &Block{[]byte{}, data, prevHash}
+// func CreateBlock(data []byte, prevHash []byte) *Block {
+// 	block := &Block{[]byte{}, data, prevHash}
 	
-	block.DeriveHash()
-	return block
-}
+// 	block.DeriveHash()
+// 	return block
+// }
 
-func (chain *BlockChain) AddBlock(data []byte){
-	prevBlock := chain.Blocks[len(chain.Blocks)-1]
-	new := CreateBlock(data, prevBlock.Hash)
-	chain.Blocks = append(chain.Blocks, new)
-}
+// func (chain *BlockChain) AddBlock(data []byte){
+// 	prevBlock := chain.Blocks[len(chain.Blocks)-1]
+// 	new := CreateBlock(data, prevBlock.Hash)
+// 	chain.Blocks = append(chain.Blocks, new)
+// }
 
-func Genesis() *Block{
-	str := "Genesis"
-	return CreateBlock([]byte(str),[]byte{})
-}
+// func Genesis() *Block{
+// 	str := "Genesis"
+// 	return CreateBlock([]byte(str),[]byte{})
+// }
 
 
-func InitBlockChain() *BlockChain {
-	return &BlockChain{[]*Block{Genesis()}}
-}
+// func InitBlockChain() *BlockChain {
+// 	return &BlockChain{[]*Block{Genesis()}}
+// }
 
